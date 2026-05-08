@@ -8,6 +8,10 @@
   <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=ffffff" />
 </p>
 
+<p align="center">
+  <img src="https://github.com/kiellzz/book-management-api/actions/workflows/tests.yml/badge.svg" />
+</p>
+
 ---
 
 ## 🧠 About the Project
@@ -20,44 +24,49 @@ This project was built as an **academic assignment (3rd semester - ADS)**, focus
 
 ## 🚀 Features
 
-* Create books  
-* List all books  
-* Get book by ID  
-* Update book  
-* Delete book  
-* Health check endpoint (`/health`)  
+* Create books
+* List all books
+* Get book by ID
+* Update book
+* Delete book
+* Health check endpoint (`/health`)
 
 ---
 
 ## 🛠 Tech Stack
 
-* Node.js  
-* TypeScript  
-* Express  
-* TypeORM  
-* SQLite  
-* ts-node-dev  
+* Node.js
+* TypeScript
+* Express
+* TypeORM
+* SQLite
+* ts-node-dev
+* Jest + Supertest (tests)
 
 ---
 
 ## 📦 Project Structure
 
 ```bash
-API-biblioteca/
+book-management-api/
 ├── data-source.ts
 ├── package.json
 ├── tsconfig.json
 └── src/
     ├── index.ts
+    ├── app.ts
     ├── controllers/
     │   └── LivroController.ts
     ├── entities/
     │   └── Livro.ts
     ├── repositories/
     │   └── LivroRepository.ts
-    └── routes/
-        └── livroRoutes.ts
-````
+    ├── routes/
+    │   └── livroRoutes.ts
+    └── __tests__/
+        ├── livros.test.ts
+        └── test-data-source.ts
+```
 
 ---
 
@@ -90,19 +99,15 @@ Example:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/kiellzz/API-biblioteca.git
-cd API-biblioteca
+git clone https://github.com/kiellzz/book-management-api.git
+cd book-management-api
 ```
-
----
 
 ### 2. Install dependencies
 
 ```bash
 npm install
 ```
-
----
 
 ### 3. Run in development mode
 
@@ -111,32 +116,30 @@ npm run dev
 ```
 
 Server running at:
-
-```bash
 http://localhost:3000
-```
 
 ---
 
 ## ▶️ Scripts
 
 ```bash
-npm run dev
+npm run dev    # Start development server
+npm run build  # Compile TypeScript
+npm start      # Run production build
+npm test       # Run tests
 ```
 
-Start development server
+---
+
+## 🧪 Tests
+
+This project includes automated tests using **Jest** and **Supertest**, covering all CRUD endpoints.
 
 ```bash
-npm run build
+npm test
 ```
 
-Compile TypeScript
-
-```bash
-npm start
-```
-
-Run production build
+Tests run automatically on every push via **GitHub Actions**.
 
 ---
 
@@ -155,9 +158,7 @@ Run production build
 ## 📌 Endpoints
 
 ### Create book
-
 **POST** `/livros`
-
 ```json
 {
   "titulo": "Dom Casmurro",
@@ -167,28 +168,16 @@ Run production build
 }
 ```
 
----
-
 ### Get all books
-
 **GET** `/livros`
 
----
-
 ### Get by ID
-
 **GET** `/livros/:id`
 
----
-
 ### Update book
-
 **PUT** `/livros/:id`
 
----
-
 ### Delete book
-
 **DELETE** `/livros/:id`
 
 ---
@@ -197,6 +186,7 @@ Run production build
 
 * SQLite (`database.sqlite`)
 * Automatic sync via TypeORM
+* In-memory SQLite for tests
 
 ---
 
@@ -206,4 +196,3 @@ Developed by **Ezequiel Borges**
 
 * GitHub: [https://github.com/kiellzz](https://github.com/kiellzz)
 * LinkedIn: [https://linkedin.com/in/ezequielborgesdev/](https://linkedin.com/in/ezequielborgesdev/)
-
