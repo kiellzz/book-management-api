@@ -35,6 +35,17 @@ describe("API de Livros", () => {
     livroId = res.body.id;
   });
 
+  it("POST /livros → deve retornar 400 com dados inválidos", async () => {
+  const res = await request(app).post("/livros").send({
+    titulo: "",
+    autor: 12345,
+    ano: "não sei",
+    editora: null,
+  });
+  expect(res.status).toBe(400);
+  expect(res.body.erros).toBeDefined();
+});
+
   it("GET /livros → deve retornar lista de livros", async () => {
     const res = await request(app).get("/livros");
     expect(res.status).toBe(200);

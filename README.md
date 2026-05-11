@@ -6,6 +6,7 @@
   <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/TypeORM-E83524?style=for-the-badge&logo=typeorm&logoColor=ffffff" />
   <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=ffffff" />
+  <img src="https://img.shields.io/badge/Zod-3E67B1?style=for-the-badge&logo=zod&logoColor=ffffff" />
 </p>
 
 <p align="center">
@@ -16,9 +17,9 @@
 
 ## 🧠 About the Project
 
-REST API developed for book management, allowing full CRUD operations.
+REST API developed for book management, allowing full CRUD operations with input validation.
 
-This project was built as an **academic assignment (3rd semester - ADS)**, focusing on backend fundamentals, API design, and code organization.
+This project was built as an **academic assignment (3rd semester - ADS)**, focusing on backend fundamentals, API design, data validation and code organization.
 
 ---
 
@@ -29,6 +30,7 @@ This project was built as an **academic assignment (3rd semester - ADS)**, focus
 * Get book by ID
 * Update book
 * Delete book
+* Input validation with **Zod**
 * Health check endpoint (`/health`)
 
 ---
@@ -40,6 +42,7 @@ This project was built as an **academic assignment (3rd semester - ADS)**, focus
 * Express
 * TypeORM
 * SQLite
+* Zod (validation)
 * ts-node-dev
 * Jest + Supertest (tests)
 
@@ -63,6 +66,8 @@ book-management-api/
     │   └── LivroRepository.ts
     ├── routes/
     │   └── livroRoutes.ts
+    ├── schemas/
+    │   └── livroSchema.ts
     └── __tests__/
         ├── livros.test.ts
         └── test-data-source.ts
@@ -94,6 +99,23 @@ Example:
 
 ---
 
+## ✅ Validation
+
+Input data is validated using **Zod** before reaching the database. Invalid requests return a `400` response with detailed field errors.
+
+Example of invalid request response:
+
+```json
+{
+  "erros": {
+    "titulo": ["Título é obrigatório"],
+    "ano": ["Ano deve ser inteiro"]
+  }
+}
+```
+
+---
+
 ## ⚙️ How to Run
 
 ### 1. Clone the repository
@@ -116,7 +138,9 @@ npm run dev
 ```
 
 Server running at:
+```
 http://localhost:3000
+```
 
 ---
 
@@ -133,7 +157,7 @@ npm test       # Run tests
 
 ## 🧪 Tests
 
-This project includes automated tests using **Jest** and **Supertest**, covering all CRUD endpoints.
+This project includes **9 automated tests** using **Jest** and **Supertest**, covering all CRUD endpoints and input validation.
 
 ```bash
 npm test
